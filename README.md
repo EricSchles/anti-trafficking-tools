@@ -1,5 +1,16 @@
 # anti-trafficking-tools
 
+## Installation
+
+### Dependencies For Java
+
+* jsoup
+* selenium
+* json
+* berkeley NLP
+
+## Background and running instructions
+
 backpage_public_code.ipynb - this is the code to match a Backpage ad with potential Bitcoin transactions. see the code for more details.
 
 

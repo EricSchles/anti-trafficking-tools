@@ -1,0 +1,7 @@
+from glob import glob
+
+with open(File, "r") as f:
+    f.read().split()("\n")
+j_files = glob("*.java")
+for j_file in j_files:
+    
