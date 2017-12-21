@@ -1,0 +1,10 @@
+nltk
+sklearn
+requests
+pandas
+jupyter
+ipython
+numpy
+bs4
+scp
+paramiko
