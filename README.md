@@ -9,6 +9,28 @@
 * json
 * berkeley NLP
 
+### Installing jsoup
+
+### Dependencies For Python
+
+* nltk
+* sklearn
+* requests
+* traceback
+* pandas
+* jupyter
+* ipython
+* numpy
+* bs4
+* scp
+* paramiko
+
+### How to install dependencies
+
+from the main directory run:
+
+`python -m pip install -r requirements.txt`
+
 ## Background and running instructions
 
 backpage_public_code.ipynb - this is the code to match a Backpage ad with potential Bitcoin transactions. see the code for more details.
