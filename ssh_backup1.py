@@ -12,7 +12,7 @@ def ssh(chosen, input, client, k):
     sftp.close()
     client.close()
 
-def do(urls,chosen):
+def do(urls, chosen):
     k = paramiko.RSAKey.from_private_key_file("/home/ubuntu/.ssh/backpage2-scraper.pem")
     client = paramiko.SSHClient()
     client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
