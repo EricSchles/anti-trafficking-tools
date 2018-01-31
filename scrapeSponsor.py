@@ -10,7 +10,6 @@ import time
 import os
 import sys
 import subprocess
-from __builtin__ import True
 from timeit import default_timer as timer
 
 start = timer()
@@ -113,7 +112,7 @@ for loc in locs:
     log.write("\n")
     log.write('done!')
     log.write("\n")
-    print 'saved'
+    print('saved')
 elapsed_time = timer() - start
 log.write("time to run : ")
 log.write(str(elapsed_time))
