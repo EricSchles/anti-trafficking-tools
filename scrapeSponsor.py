@@ -66,7 +66,7 @@ for loc in locs:
     results = pool.map(parse, urls)
     log.write('done!')
     log.write("\n")
-    print 'done'
+    print('done')
     #all 8 files
     log.write('saving files...')
     service = ''
