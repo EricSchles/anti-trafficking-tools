@@ -1,5 +1,5 @@
 from sklearn import linear_model
-import numpy
+import numpy as np
 from features import Features
 from values import Values
 from io import StringIO
@@ -12,10 +12,11 @@ class Model(object):
     def __init__(self, C, path):
         self.C = C
         self.path = path
-        self.lr = linear_model.LogisticRegression(C=self.C,class_weight={0:1,1:1})
+        self.lr = linear_model.LogisticRegression(C=self.C, class_weight={0:1,1:1})
         self.all_names = []
         name_file = open('names_uniq.tsv', 'r')
-        for line in name_file: self.all_names.append(line.split("\t")[0].lower().rstrip())
+        for line in name_file: 
+            self.all_names.append(line.split("\t")[0].lower().rstrip())
         
     def train(self, X, y):
         self.lr.fit(X, y)
@@ -29,35 +30,35 @@ if __name__ == '__main__':
     lm = Model(1.0, path_to_jars)
     
     #REBECCA'S ORIGINAL MODEL
-    X1 = numpy.loadtxt('go_1small.txt')
-    X1_titles = numpy.loadtxt('go_1_titleFeatssmall.txt')
-    X1 = numpy.concatenate((X1, X1_titles), axis = 1)
+    X1 = np.loadtxt('go_1small.txt')
+    X1_titles = np.loadtxt('go_1_titleFeatssmall.txt')
+    X1 = np.concatenate((X1, X1_titles), axis = 1)
 
     y = numpy.empty([7500])
     for i in range(0, 7500):
         if (i <= 4999) : y[i] = 0
         else : y[i] = 1
         
-    X2 = numpy.loadtxt('go_2small.txt')
-    X2_titles = numpy.loadtxt('go_2_titleFeatssmall.txt')
-    X2 = numpy.concatenate((X2, X2_titles), axis = 1)
+    X2 = np.loadtxt('go_2small.txt')
+    X2_titles = np.loadtxt('go_2_titleFeatssmall.txt')
+    X2 = np.concatenate((X2, X2_titles), axis = 1)
     
-    X3 = numpy.loadtxt('go_3small.txt')
-    X3_titles = numpy.loadtxt('go_3_titleFeatssmall.txt')
-    X3 = numpy.concatenate((X3, X3_titles), axis = 1)
+    X3 = np.loadtxt('go_3small.txt')
+    X3_titles = np.loadtxt('go_3_titleFeatssmall.txt')
+    X3 = np.concatenate((X3, X3_titles), axis = 1)
     
     lr = linear_model.LogisticRegression(penalty = 'l2', dual = False, tol=0.0001, C=10, 
                                          fit_intercept = True, class_weight= {0:1,1:1})
     
-    print 'training model...'
+    print('training model...')
     lr.fit(X1, y)
-    print 'done'
+    print('done')
     
-    print 'testing model...'
+    print('testing model...')
     y_pred = lr.predict(X2)
-    print 'done'
+    print('done')
 
-    print "Train 1, Test 2"
+    print("Train 1, Test 2")
     FP = 0
     TP = 0
     FN = 0
@@ -74,10 +75,10 @@ if __name__ == '__main__':
     fpr1 = FP/float((FP + TN))
     print fpr1
     tpr1 = TP/float((TP + FN))
-    print tpr1
+    print(tpr1)
     
-    print
-    print "Train1, Test 3"
+    print()
+    print("Train1, Test 3")
     FP = 0
     TP = 0
     FN = 0
@@ -90,15 +91,15 @@ if __name__ == '__main__':
         elif y_pred[i] == 1 and y[i] == 0: FP = FP + 1
         elif y_pred[i] == 0 and y[i] == 1: FN = FN + 1
     acc2 = (TP+TN)/float(len(y_pred))
-    print acc2
+    print(acc2)
     #print classification_report(y, y_pred)
     fpr2 = FP/float((FP + TN))
-    print fpr2
+    print(fpr2)
     tpr2 = TP/float((TP + FN))
-    print tpr2
+    print(tpr2)
     
-    print
-    print "Train2, Test 1"
+    print()
+    print("Train2, Test 1")
     FP = 0
     TP = 0
     FN = 0
@@ -112,15 +113,15 @@ if __name__ == '__main__':
         elif y_pred[i] == 1 and y[i] == 0: FP = FP + 1
         elif y_pred[i] == 0 and y[i] == 1: FN = FN + 1
     acc3 = (TP+TN)/float(len(y_pred))
-    print acc3
+    print(acc3)
     #print classification_report(y, y_pred)
     fpr3 = FP/float((FP + TN))
-    print fpr3
+    print(fpr3)
     tpr3 = TP/float((TP + FN))
-    print tpr3
+    print(tpr3)
     
-    print
-    print "Train2, Test 3"
+    print()
+    print("Train2, Test 3")
     FP = 0
     TP = 0
     FN = 0
@@ -133,15 +134,15 @@ if __name__ == '__main__':
         elif y_pred[i] == 1 and y[i] == 0: FP = FP + 1
         elif y_pred[i] == 0 and y[i] == 1: FN = FN + 1
     acc4 = (TP+TN)/float(len(y_pred))
-    print acc4
+    print(acc4)
     #print classification_report(y, y_pred)
     fpr4 = FP/float((FP + TN))
-    print fpr4
+    print(fpr4)
     tpr4 = TP/float((TP + FN))
-    print tpr4
+    print(tpr4)
     
-    print
-    print "Train3, Test 1"
+    print()
+    print=("Train3, Test 1"
     FP = 0
     TP = 0
     FN = 0

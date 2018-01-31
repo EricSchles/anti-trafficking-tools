@@ -27,6 +27,7 @@ log_master = open('/home/ubuntu/'+ts_str+'_log', 'w')
 sys.stdout = open('/home/ubuntu/'+ts_str+'_stdout', 'w')
 sys.stderr = open('/home/ubuntu/'+ts_str+'_stderr', 'w')
 failed_proxies = []
+
 def getPort():
     upper = 499
     lower = 2
