@@ -7,9 +7,13 @@ import numpy
 import itertools
 from string import punctuation
 
-#initializes with ad text, path to POS jars, and list of all names. call extract_* to get the values
-class Values(object):
-    
+
+class Values:
+    """
+    initializes with ad text, path to POS jars, and list of all names. 
+    Call extract_* to get the values.
+    or to get all of them call get_vals
+    """
     def __init__(self, data, path, all_names):
         self.data = data
         self.path = path
@@ -26,7 +30,7 @@ class Values(object):
         self.bl = self.extract_breaklines()
         self.ws = self.extract_websites()
     
-    def getVals(self):
+    def get_vals(self):
         return self.bl, self.wg1, self.wg2, self.ws, self.nms, self.pos, self.cg1, self.cg2, self.cg3
         
     def extract_POS(self):
@@ -53,7 +57,7 @@ class Values(object):
             idx_old = idx_new;
         return breaklines
     
-    def extract_chargrams(self,gram_size):
+    def extract_chargrams(self, gram_size):
         return [''.join(self.data[i:i+gram_size]) for i in range(len(self.data)-gram_size+1)]
     
     def extract_wordgrams(self, gram_size):
@@ -92,10 +96,10 @@ CALL ME!!!<br>
     path_to_jars = 'src/'
     all_names = []
     name_file = open('names_uniq.tsv', 'r')
-    for line in name_file: all_names.append(line.split("\t")[0].lower().rstrip())
-    
+    for line in name_file: 
+        all_names.append(line.split("\t")[0].lower().rstrip())
     v = Values(ad_data, path_to_jars, all_names)
-    print v.getVals()
+    print(v.get_vals())
     #for a,b in v.extract_POS():
     #    print a, b
     '''
