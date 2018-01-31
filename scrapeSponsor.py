@@ -47,74 +47,21 @@ def parse(url):
 ts = int(time.time())
 ts_str = str(ts)
 
-locs = []
-locs.append("la")
-locs.append("imperial")
-locs.append("washington")
-locs.append("upstateca")
-locs.append("sfbay")
-locs.append("centralcoast")
-locs.append("sandiego")
-locs.append("oregon")
-locs.append("nevada")
-locs.append("sanjoaquinvalley")
-locs.append("sacramento")
-locs.append("newyork")
-locs.append("southflorida")
-locs.append("burlington")
-locs.append("newjersey")
-locs.append("maine")
-locs.append("northcarolina")
-locs.append("daytona")
-locs.append("georgia")
-locs.append("newhampshire")
-locs.append("pennsylvania")
-locs.append("westvirginia")
-locs.append("southwestflorida")
-locs.append("rhodeisland")
-locs.append("delaware")
-locs.append("michigan")
-locs.append("ohio")
-locs.append("northwestflorida")
-locs.append("massachusetts")
-locs.append("northflorida")
-locs.append("southcarolina")
-locs.append("maryland")
-locs.append("connecticut")
-locs.append("virginia")
-locs.append("dc")
-locs.append("indiana")
-locs.append("upstateny")
-locs.append("southdakota")
-locs.append("illinois")
-locs.append("northeasttexas")
-locs.append("northdakota")
-locs.append("southeasttexas")
-locs.append("nebraska")
-locs.append("wisconsin")
-locs.append("iowa")
-locs.append("louisiana")
-locs.append("kansas")
-locs.append("tennessee")
-locs.append("arkansas")
-locs.append("missouri")
-locs.append("kentucky")
-locs.append("southtexas")
-locs.append("alabama")
-locs.append("mississippi")
-locs.append("minnesota")
-locs.append("centraltexas")
-locs.append("oklahoma")
-locs.append("arizona")
-locs.append("montana")
-locs.append("newmexico")
-locs.append("westtexas")
-locs.append("colorado")
-locs.append("wyoming")  
-locs.append("idaho")
-locs.append("utah")
-locs.append("alaska")
-locs.append("hawaii")
+locs = ["la", "imperial", "washington", "upstateca", "sfbay", 
+        "centralcoast", "sandiego", "oregon", "nevada", 
+        "sanjoaquinvalley", "sacramento", "newyork", "southflorida", 
+        "burlington", "newjersey", "maine", "northcarolina", "daytona", 
+        "georgia", "newhampshire", "pennsylvania", "westvirginia", 
+        "southwestflorida", "rhodeisland", "delaware", "michigan", 
+        "ohio", "northwestflorida", "massachusetts", "northflorida", 
+        "southcarolina", "maryland", "connecticut", "virginia", "dc", 
+        "indiana", "upstateny", "southdakota", "illinois", "northeasttexas", 
+        "northdakota", "southeasttexas", "nebraska", "wisconsin", 
+        "iowa", "louisiana", "kansas", "tennessee", "arkansas", 
+        "missouri", "kentucky", "southtexas", "alabama", "mississippi", 
+        "minnesota", "centraltexas", "oklahoma", "arizona", "montana", 
+        "newmexico", "westtexas", "colorado", "wyoming",  "idaho", "utah", "alaska", "hawaii"
+    ]
 
 urls = []
 for loc in locs:
