@@ -67,13 +67,15 @@ if __name__ == '__main__':
         if y_pred[i] == y[i]: 
             if y[i] == 1: TP = TP + 1
             if y[i] == 0: TN = TN + 1
-        elif y_pred[i] == 1 and y[i] == 0: FP = FP + 1
-        elif y_pred[i] == 0 and y[i] == 1: FN = FN + 1
+        elif y_pred[i] == 1 and y[i] == 0:
+            FP += 1
+        elif y_pred[i] == 0 and y[i] == 1:
+            FN += 1
     acc1 = (TP+TN)/float(len(y_pred))
-    print acc1
+    print(acc1)
     #print classification_report(y, y_pred)
     fpr1 = FP/float((FP + TN))
-    print fpr1
+    print(fpr1)
     tpr1 = TP/float((TP + FN))
     print(tpr1)
     
@@ -86,10 +88,14 @@ if __name__ == '__main__':
     y_pred = lr.predict(X3)
     for i in range(0, len(y_pred)):
         if y_pred[i] == y[i]: 
-            if y[i] == 1: TP = TP + 1
-            if y[i] == 0: TN = TN + 1
-        elif y_pred[i] == 1 and y[i] == 0: FP = FP + 1
-        elif y_pred[i] == 0 and y[i] == 1: FN = FN + 1
+            if y[i] == 1:
+                TP += 1
+            if y[i] == 0:
+                TN += 1
+        elif y_pred[i] == 1 and y[i] == 0:
+            FP += 1
+        elif y_pred[i] == 0 and y[i] == 1:
+            FN += 1
     acc2 = (TP+TN)/float(len(y_pred))
     print(acc2)
     #print classification_report(y, y_pred)
@@ -142,7 +148,7 @@ if __name__ == '__main__':
     print(tpr4)
     
     print()
-    print=("Train3, Test 1"
+    print=("Train3, Test 1")
     FP = 0
     TP = 0
     FN = 0
@@ -151,20 +157,24 @@ if __name__ == '__main__':
     y_pred = lr.predict(X1)
     for i in range(0, len(y_pred)):
         if y_pred[i] == y[i]: 
-            if y[i] == 1: TP = TP + 1
-            if y[i] == 0: TN = TN + 1
-        elif y_pred[i] == 1 and y[i] == 0: FP = FP + 1
-        elif y_pred[i] == 0 and y[i] == 1: FN = FN + 1
+            if y[i] == 1:
+                TP += 1
+            if y[i] == 0:
+                TN += 1
+        elif y_pred[i] == 1 and y[i] == 0:
+            FP += 1
+        elif y_pred[i] == 0 and y[i] == 1:
+            FN += 1
     acc5 = (TP+TN)/float(len(y_pred))
-    print acc5
+    print(acc5)
     #print classification_report(y, y_pred)
     fpr5 = FP/float((FP + TN))
-    print fpr5
+    print(fpr5)
     tpr5 = TP/float((TP + FN))
-    print tpr5
+    print(tpr5)
     
-    print
-    print "Train3, Test 2"
+    print()
+    print("Train3, Test 2")
     FP = 0
     TP = 0
     FN = 0
@@ -172,22 +182,26 @@ if __name__ == '__main__':
     y_pred = lr.predict(X2)
     for i in range(0, len(y_pred)):
         if y_pred[i] == y[i]: 
-            if y[i] == 1: TP = TP + 1
-            if y[i] == 0: TN = TN + 1
-        elif y_pred[i] == 1 and y[i] == 0: FP = FP + 1
-        elif y_pred[i] == 0 and y[i] == 1: FN = FN + 1
+           if y[i] == 1:
+               TP += 1
+           if y[i] == 0:
+               TN += 1
+        elif y_pred[i] == 1 and y[i] == 0:
+            FP += 1
+        elif y_pred[i] == 0 and y[i] == 1:
+            FN += 1
     acc6 = (TP+TN)/float(len(y_pred))
-    print acc6
+    print(acc6)
     #print classification_report(y, y_pred)
     fpr6 = FP/float((FP + TN))
-    print fpr6
+    print(fpr6)
     tpr6 = TP/float((TP + FN))
-    print tpr6
+    print(tpr6)
     
-    print
-    print (acc1+acc2+acc3+acc4+acc5+acc6)/6
-    print (fpr1+fpr2+fpr3+fpr4+fpr5+fpr6)/6
-    print (tpr1+tpr2+tpr3+tpr4+tpr5+tpr6)/6
+    print()
+    print((acc1+acc2+acc3+acc4+acc5+acc6)/6)
+    print((fpr1+fpr2+fpr3+fpr4+fpr5+fpr6)/6)
+    print((tpr1+tpr2+tpr3+tpr4+tpr5+tpr6)/6)
     
     
     
