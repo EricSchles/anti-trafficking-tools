@@ -7,11 +7,13 @@ name = "pypi"
 
 [packages]
 
-Scrapy = "*"
-Flask = "*"
-Flask-SQLAlchemy = "*"
-Flask-Migrate = "*"
+scrapy = "*"
+flask = "*"
+flask-sqlalchemy = "*"
+flask-migrate = "*"
 pipenv = "*"
+"psycopg2" = "*"
+flask-script = "*"
 
 
 [dev-packages]

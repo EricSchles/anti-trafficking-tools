@@ -1,14 +1,13 @@
 from flask import Flask
 from flask_script import Manager
-from flask.ext.sqlalchemy import SQLAlchemy
-from flask.ext.migrate import Migrate, MigrateCommand
-from .commands import REPL
+from flask_sqlalchemy import SQLAlchemy
+from flask_migrate import Migrate, MigrateCommand
 import os
 
-username = "backpage_scraper_admin"
+username, password = "backpage_scraper_admin", "1234"
 app = Flask(__name__)
 #app.config["SQLALCHEMY_DATABASE_URI"] = os.getenv("DATABASE_URL")
-app.config["SQLALCHEMY_DATABASE_URI"] = "postgresql://"+username+"@localhost/backpage_scrape_ads"
+app.config["SQLALCHEMY_DATABASE_URI"] = "postgresql://"+username+":"+password+"@localhost/backpage_scrape_ads"
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 
