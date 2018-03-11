@@ -1,5 +1,8 @@
-import scrapy 
+import scrapy
 import IPython
+from app.models import BackpageAdInfo
+from app import db
+from datetime import datetime
 
 class BlogSpider(scrapy.Spider):
 	name = "backpage_spider"
@@ -13,4 +16,22 @@ class BlogSpider(scrapy.Spider):
 
 	def parse(self, response):
 		for ad in response.xpath("//div[contains(@class, 'cat')]/a/@href"):
-			yield {"ad": ad.root}
+			 url = ad.root
+			 phone_number,post_id = url.split("/")[-2:]
+			 title = phone_number
+			 ad_obj = BackpageAdInfo(
+			 	url,
+				title,
+				phone_number,
+				"", #location
+				"", #latitude
+				"", #longitude
+				"",	#ad_body
+				"", #photos
+				post_id, #post_id
+				datetime.now(), #timestamp
+				"", #city
+				"", #state
+			 )
+			 db.session.add(ad_obj)
+			 db.session.commit()

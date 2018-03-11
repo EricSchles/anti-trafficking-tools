@@ -1,30 +1,16 @@
-from flask import Flask
-from flask_script import Manager
-from flask_sqlalchemy import SQLAlchemy
-from flask_migrate import Migrate, MigrateCommand
-import os
-
-username, password = "backpage_scraper_admin", "1234"
-app = Flask(__name__)
-#app.config["SQLALCHEMY_DATABASE_URI"] = os.getenv("DATABASE_URL")
-app.config["SQLALCHEMY_DATABASE_URI"] = "postgresql://"+username+":"+password+"@localhost/backpage_scrape_ads"
-db = SQLAlchemy(app)
-migrate = Migrate(app, db)
-
-manager = Manager(app)
-manager.add_command('db', MigrateCommand)
+from app import db
 
 class BackpageAdInfo(db.Model):
     """
     This model gives us a set of specific information from each add scraped from backpage.
-    
+
     parameters:
     @ad_title - used primarily to uniquely identify backpage ads - since titles are unique
     @phone_number - the phone number used in the ad, can be empty.  This number is stored as a string
     since it should be thought of as immutable.
-    @city - the city the add is from
-    @state - the state the add is from
-    @location - the location mentioned in the advertisement 
+    @city - the city the ad is from
+    @state - the state the ad is from
+    @location - the location mentioned in the advertisement
     @latitude - latitude derived from the location mentioned in the advertisement
     @longitude - longitude derived from the location mentioned in the advertisement
     @ad_body - the long form text in the ad
@@ -35,6 +21,7 @@ class BackpageAdInfo(db.Model):
     """
     __tablename__ = 'ad_info'
     id = db.Column(db.Integer, primary_key=True)
+    url = db.Column(db.String)
     ad_title = db.Column(db.String)
     phone_number = db.Column(db.String)
     location = db.Column(db.String)
@@ -46,8 +33,7 @@ class BackpageAdInfo(db.Model):
     timestamp = db.Column(db.DateTime)
     city = db.Column(db.String)
     state = db.Column(db.String)
-    url = db.Column(db.String)
-    
+
     def __init__(self,url, ad_title, phone_number, ad_body, location, latitude, longitude, photos, post_id,timestamp, city, state):
         self.url = url
         self.ad_title = ad_title
