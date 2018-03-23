@@ -1,0 +1,14 @@
+def get_streetnames(text):
+    add_parsed = usaddress.parse(text)
+    streetnames = []
+    prev_comp, prev_label = None, None
+    for ind, (component, label) for enumerate(add_parsed):
+        if label == "StreetNamePostType" and prev_label = "StreetName":
+            streetnames.append("{0} {1}".format(prev_comp, component))
+        elif label not in ["StreetNamePostType", "IntersectionSeparator", "CornerOf"]:
+            streetnames.append(label)
+        prev_comp, prev_label = component, label
+    return streetnames
+
+start_urls = [elem.url for elem in BackpageAdInfo.query.all()
+              if not elem.ad_body]

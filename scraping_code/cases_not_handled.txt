@@ -1,0 +1,20 @@
+>>> import usaddress
+>>> usaddress.parse("9 Poplar Court, Great Neck, NY, 11024")
+[('9', 'AddressNumber'), ('Poplar', 'StreetName'), ('Court,', 'StreetNamePostType'), ('Great', 'PlaceName'), ('Neck,', 'PlaceName'), ('NY,', 'StateName'), ('11024', 'ZipCode')]
+>>> 
+
+>>> usaddress.parse("Great Neck, 9 Poplar Court NY, 11024")
+[('Great', 'StreetName'), ('Neck,', 'StreetNamePostType'), ('9', 'OccupancyIdentifier'), ('Poplar', 'PlaceName'), ('Court', 'PlaceName'), ('NY,', 'StateName'), ('11024', 'ZipCode')]
+>>> 
+
+
+>>> usaddress.parse("Court street and delaney street")
+[('Court', 'StreetName'), ('street', 'StreetNamePostType'), ('and', 'IntersectionSeparator'), ('delaney', 'StreetName'), ('street', 'StreetNamePostType')]
+>>> 
+
+
+>>> usaddress.parse("court and bailey")
+[('court', 'StreetNamePostType'), ('and', 'IntersectionSeparator'), ('bailey', 'StreetName')]
+
+>>> usaddress.parse("anderson and bailey")
+[('anderson', 'Recipient'), ('and', 'Recipient'), ('bailey', 'Recipient')]
