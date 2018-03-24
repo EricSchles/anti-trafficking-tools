@@ -8,7 +8,7 @@ from geopy.geocoders import Nominatim, GoogleV3
 def format_post_type(post_type):
     if post_type.lower() == "st.":
         return "Street"
-    elif post_type.lower() == "ct." or post_type.lower() == 'crt.':
+    elif post_type.lower() in ["ct.", 'crt.']:
         return "Court"
     else:
         return post_type
@@ -30,7 +30,7 @@ def format_address(addr_components):
     result_addr = "".join([dicter[label] for label in label_order])
     return result_addr
 
-    
+
 # def format_address(addr):
 #     addr_components = usaddress.parse(addr)
 #     dicter = {}
@@ -41,13 +41,13 @@ def format_address(addr_components):
 #             dicter[component[1]] += " "+component[0]
 #     result_addr = dicter["AddressNumber"] + " " + dicter["StreetName"]
 #     result_addr += " " + format_streetname_post_type(dicter["StreetNamePostType"])
-#     result_addr += " " + dicter["PlaceName"] + " " + dicter["StateName"] + " "+ dicter["ZipCode"] 
+#     result_addr += " " + dicter["PlaceName"] + " " + dicter["StateName"] + " "+ dicter["ZipCode"]
 #     return result_addr
 
 
 def address_is_complete(text):
-    for elem in usaddress.parse(text):
-        if elem[1] == "IntersectionSeparator" or "CornerOf":
+    for component, label in usaddress.parse(text):
+        if label == "IntersectionSeparator" or "CornerOf":
             return "cross street"
     return "complete"
 
@@ -95,9 +95,18 @@ def get_lat_long(text, city):
             location = google_encoder.geocode(' and '.join(get_streetnames(text)) + city)
     if location:
         return location.latitude, location.longitude
-    
+
 def clean_location_string(text):
-    return text.replace("&"," ").replace("\r"," ").replace("\n"," ").replace("Location:","").replace("•","").strip()
+    replace_pairs = [
+        ("&"," "),
+        ("\r"," "),
+        ("\n"," "),
+        ("Location:",""),
+        ("•","")
+    ]
+    for old_char, new_char in replace_pairs:
+        text = text.replace(old_char, new_char)
+    return text.strip()
 
 def strip_post_id(text):
     return text.split(": ")[1].split(" ")[0]
